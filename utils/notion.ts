@@ -51,6 +51,28 @@ export async function getAllPosts(page_size = 100, recursive = true, start_curso
   return response;
 }
 
+export async function getPageIdFromSlug(slug: string): Promise<string> {
+  const response = await notion.databases.query({
+    database_id: process.env.NOTION_BLOG_DB!,
+    filter: {
+      property: "Slug",
+      text: {
+        equals: slug,
+      },
+    },
+    sorts: [{
+      property: "Date",
+      direction: "descending",
+    }],
+  });
+
+  if (response.results.length === 0) {
+    throw new Error(`No page found for slug ${slug}`);
+  }
+
+  return response.results[0].id;
+}
+
 export async function getPostContentMarkdown(pageId: string): Promise<string> {
   const mdBlocks = await n2m.pageToMarkdown(pageId);
   return n2m.toMarkdownString(mdBlocks);

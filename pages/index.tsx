@@ -46,7 +46,7 @@ const Home: NextPage<HomeProps> = ({ siteTitle, introHtml, posts }) => {
         {posts.map((post) => {
           return (
             <h3 key={post.id}>
-              <Link href={`/posts/${post.id}/${post.slug}`} passHref>
+              <Link href={`/posts/${post.slug}`} passHref>
                 <a className="text-blue-500 hover:underline text-lg">
                   {post.title}
                 </a>

@@ -6,14 +6,15 @@ import { DiscussionEmbed } from "disqus-react";
 
 import {
   getAllPosts,
+  getPageIdFromSlug,
   getPageObject,
   getPostContentMarkdown,
   getSiteTitle,
   getText,
-} from "../../../utils/notion";
-import { renderMarkdown } from "../../../utils/markdown";
+} from "../../utils/notion";
+import { renderMarkdown } from "../../utils/markdown";
 
-import { Layout } from "../../../components/Layout";
+import { Layout } from "../../components/Layout";
 
 import "highlight.js/styles/agate.css";
 
@@ -78,8 +79,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const paths = posts.results.map((post: any) => ({
     params: {
-      id: post.id,
-      slug: [getText(post.properties.Slug?.rich_text)],
+      slug: getText(post.properties.Slug?.rich_text),
     },
   }));
 
@@ -90,10 +90,12 @@ export const getStaticProps: GetStaticProps<DocProps> = async (context) => {
   const siteTitle = await getSiteTitle();
 
   const { params } = context;
-  const { id } = params!;
+  const { slug } = params!;
 
-  const postContent = await getPostContentMarkdown(id as string);
-  const postMetadata: any = await getPageObject(id as string);
+  const pageId = await getPageIdFromSlug(slug as string);
+
+  const postContent = await getPostContentMarkdown(pageId);
+  const postMetadata: any = await getPageObject(pageId);
 
   const postTitle = getText(postMetadata.properties.Name.title);
   const __html = renderMarkdown(postContent);
