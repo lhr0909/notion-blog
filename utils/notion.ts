@@ -24,6 +24,12 @@ export async function getSiteTitle(): Promise<string> {
 export async function getAllPosts(page_size = 100, recursive = true, start_cursor?: string) {
   const response = await notion.databases.query({
     database_id: process.env.NOTION_BLOG_DB!,
+    filter: {
+      property: "Published",
+      checkbox: {
+        equals: true,
+      },
+    },
     sorts: [{
       property: "Date",
       direction: "descending",
@@ -35,6 +41,12 @@ export async function getAllPosts(page_size = 100, recursive = true, start_curso
   while (recursive && response.has_more) {
     const nextPage = await notion.databases.query({
       database_id: process.env.NOTION_BLOG_DB!,
+      filter: {
+        property: "Published",
+        checkbox: {
+          equals: true,
+        },
+      },
       sorts: [{
         property: "Date",
         direction: "descending",
