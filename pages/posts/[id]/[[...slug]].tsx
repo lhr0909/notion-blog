@@ -1,9 +1,16 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import classNames from "classnames";
+import { DiscussionEmbed } from "disqus-react";
 // import { format } from 'date-fns';
 
-import { getAllPosts, getPageObject, getPostContentMarkdown, getSiteTitle, getText } from "../../../utils/notion";
+import {
+  getAllPosts,
+  getPageObject,
+  getPostContentMarkdown,
+  getSiteTitle,
+  getText,
+} from "../../../utils/notion";
 import { renderMarkdown } from "../../../utils/markdown";
 
 import { Layout } from "../../../components/Layout";
@@ -15,6 +22,7 @@ interface DocProps {
   postTitle: string;
   __html: string;
   createdAt: string;
+  oldUrl?: string;
   createdBy: string;
 }
 
@@ -30,11 +38,20 @@ const proseClassNames = classNames(
   "md:prose-p:my-4"
 );
 
-const Doc: NextPage<DocProps> = ({ siteTitle, postTitle, createdAt, createdBy, __html }) => {
+const Doc: NextPage<DocProps> = ({
+  siteTitle,
+  postTitle,
+  createdAt,
+  createdBy,
+  __html,
+  oldUrl,
+}) => {
   return (
     <>
       <Head>
-        <title>{postTitle} - {siteTitle}</title>
+        <title>
+          {postTitle} - {siteTitle}
+        </title>
       </Head>
       <Layout siteTitle={siteTitle}>
         <h1 className="text-2xl font-medium inline-block">{postTitle}</h1>
@@ -44,6 +61,12 @@ const Doc: NextPage<DocProps> = ({ siteTitle, postTitle, createdAt, createdBy, _
         <article
           className={proseClassNames}
           dangerouslySetInnerHTML={{ __html }}
+        />
+        <DiscussionEmbed
+          shortname={process.env.NEXT_PUBLIC_DISQUS_SHORTNAME!}
+          config={{
+            url: oldUrl,
+          }}
         />
       </Layout>
     </>
@@ -60,7 +83,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     },
   }));
 
-  return { paths, fallback: 'blocking' };
+  return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps: GetStaticProps<DocProps> = async (context) => {
@@ -79,8 +102,12 @@ export const getStaticProps: GetStaticProps<DocProps> = async (context) => {
     props: {
       siteTitle,
       postTitle: postTitle as string,
-      createdAt: (postMetadata.properties.Date?.date?.start || postMetadata.created_time) as string,
-      createdBy: postMetadata.properties.Author?.people.map((p: any) => p.name).join(", "),
+      createdAt: (postMetadata.properties.Date?.date?.start ||
+        postMetadata.created_time) as string,
+      createdBy: postMetadata.properties.Author?.people
+        .map((p: any) => p.name)
+        .join(", "),
+      oldUrl: getText(postMetadata.properties.OldURL?.rich_text),
       __html,
     },
     revalidate: 600,
