@@ -7,7 +7,7 @@ import TwitterIcon from "./icons/TwitterIcon";
 
 export const Footer: React.FC<{}> = () => {
   return (
-    <footer className="text-gray-500 font-extralight mt-8 flex flex-col sm:flex-row sm:justify-between">
+    <footer className="text-gray-500 font-extralight my-8 flex flex-col sm:flex-row sm:justify-between">
       <span className="block">
         Copyright (c) 2022 Simon Liang
       </span>
