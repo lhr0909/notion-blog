@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* global styles to make next/image component auto-sized */
+
+.next-image-wrapper > span {
+  position: relative!important;
+}
+
+.next-image {
+  position: relative!important;
+
+  width: auto!important;
+  height: auto!important;
+}

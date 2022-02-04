@@ -1,6 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import classNames from "classnames";
 
 import { getAllPosts, getPostContentMarkdown, getSiteTitle, getText } from "../utils/notion";
@@ -38,6 +39,7 @@ const Home: NextPage<HomeProps> = ({ siteTitle, introHtml, posts }) => {
         <title>{siteTitle}</title>
       </Head>
       <Layout siteTitle={siteTitle}>
+        <Image className="rounded" src="/simonliang.jpg" alt="logo" width={120} height={120} />
         <article
           className={proseClassNames}
           dangerouslySetInnerHTML={{ __html: introHtml }}
@@ -80,7 +82,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async (context) => {
         // TODO: tags
       })),
     },
-    revalidate: 600,
+    revalidate: 60,
   };
 };
 

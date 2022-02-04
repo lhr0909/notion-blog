@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    // whitelist notion images domain
+    domains: ['s3.us-west-2.amazonaws.com'],
+    minimumCacheTTL: 60 * 60 * 24 * 3, // 3 days
+  },
   async redirects() {
     return [
       {

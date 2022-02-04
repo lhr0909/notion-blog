@@ -12,7 +12,7 @@ import {
   getSiteTitle,
   getText,
 } from "../../utils/notion";
-import { renderMarkdown } from "../../utils/markdown";
+import { renderHtml, renderMarkdown } from "../../utils/markdown";
 
 import { Layout } from "../../components/Layout";
 
@@ -36,7 +36,7 @@ const proseClassNames = classNames(
   "prose-a:no-underline",
   "prose-a:font-normal",
   "prose-p:my-3",
-  "md:prose-p:my-4"
+  "md:prose-p:my-4",
 );
 
 const Doc: NextPage<DocProps> = ({
@@ -61,8 +61,9 @@ const Doc: NextPage<DocProps> = ({
         </div>
         <article
           className={proseClassNames}
-          dangerouslySetInnerHTML={{ __html }}
-        />
+        >
+          {renderHtml(__html)}
+        </article>
         <DiscussionEmbed
           shortname={process.env.NEXT_PUBLIC_DISQUS_SHORTNAME!}
           config={{
@@ -113,7 +114,7 @@ export const getStaticProps: GetStaticProps<DocProps> = async (context) => {
       oldUrl: getText(postMetadata.properties.OldURL?.rich_text, null),
       __html,
     },
-    revalidate: 600,
+    revalidate: 60,
   };
 };
 

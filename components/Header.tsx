@@ -13,13 +13,13 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
           <h2 className="hover:underline text-lg font-medium inline-block">{title}</h2>
         </a>
       </Link>
-      <div className="leading-8 inline-block">
+      {/* <div className="leading-8 inline-block">
         <Link href="/" passHref>
           <a className="text-blue-500 hover:underline">
             Blog Posts
           </a>
         </Link>
-      </div>
+      </div> */}
     </nav>
   );
 };
