@@ -9,7 +9,7 @@ export const n2m = new NotionToMarkdown({
   notionClient: notion,
 });
 
-export function getText(object: any, defaultText?: string): string {
+export function getText(object: any, defaultText?: string | null): string {
   return (object.map((t: any) => t?.text?.content || "").join("")) || defaultText;
 }
 

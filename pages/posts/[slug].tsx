@@ -23,7 +23,7 @@ interface DocProps {
   postTitle: string;
   __html: string;
   createdAt: string;
-  oldUrl?: string;
+  oldUrl: string | null;
   createdBy: string;
 }
 
@@ -66,7 +66,7 @@ const Doc: NextPage<DocProps> = ({
         <DiscussionEmbed
           shortname={process.env.NEXT_PUBLIC_DISQUS_SHORTNAME!}
           config={{
-            url: oldUrl,
+            url: oldUrl || undefined,
           }}
         />
       </Layout>
@@ -109,7 +109,8 @@ export const getStaticProps: GetStaticProps<DocProps> = async (context) => {
       createdBy: postMetadata.properties.Author?.people
         .map((p: any) => p.name)
         .join(", "),
-      oldUrl: getText(postMetadata.properties.OldURL?.rich_text),
+      // props needs to be null
+      oldUrl: getText(postMetadata.properties.OldURL?.rich_text, null),
       __html,
     },
     revalidate: 600,
