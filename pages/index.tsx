@@ -53,7 +53,7 @@ const Home: NextPage<HomeProps> = ({ siteTitle, introHtml, posts }) => {
                   {post.title}
                 </a>
               </Link>
-              <span className="text-gray-500 text-sm ml-2">
+              <span className="text-gray-500 text-xs md:text-sm ml-2">
                 {post.date}
               </span>
             </h3>
