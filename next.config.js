@@ -6,12 +6,12 @@ const nextConfig = {
       {
         source: '/poker/2017/09/03/run-equilab-on-macos-with-winebottler.html',
         destination: '/posts/run-equilab-on-macos-with-winebottler',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/development/react/2018/04/24/react-ie.html',
         destination: '/posts/react-ie',
-        permanent: false,
+        permanent: true,
       },
     ];
   },
