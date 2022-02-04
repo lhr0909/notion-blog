@@ -12,7 +12,7 @@ export const Footer: React.FC<{}> = () => {
     <footer className="text-gray-500 font-extralight my-8 flex flex-col sm:flex-row sm:justify-between">
       <span className="block">Copyright (c) 2022 Simon Liang</span>
       <span className="flex flex-row mt-2 sm:mt-0">
-        <Link href="https://github.com/lhr0909" passHref>
+        <Link href="/links/github" passHref>
           <a
             className="hover:text-blue-500 mr-1"
             target="_blank"
@@ -21,7 +21,7 @@ export const Footer: React.FC<{}> = () => {
             <GithubIcon className="h-6 w-6" />
           </a>
         </Link>
-        <Link href="https://twitter.com/lhr0909" passHref>
+        <Link href="/links/twitter" passHref>
           <a
             className="hover:text-blue-500 mx-1"
             target="_blank"
@@ -30,7 +30,7 @@ export const Footer: React.FC<{}> = () => {
             <TwitterIcon className="h-6 w-6" />
           </a>
         </Link>
-        <Link href="https://www.linkedin.com/in/simon-liang" passHref>
+        <Link href="/links/linkedin" passHref>
           <a
             className="hover:text-blue-500 mx-1"
             target="_blank"
@@ -40,7 +40,7 @@ export const Footer: React.FC<{}> = () => {
           </a>
         </Link>
         <Link
-          href="https://www.youtube.com/channel/UC0VobXaEqKPcUab9rKihytA"
+          href="/links/youtube"
           passHref
         >
           <a
@@ -52,7 +52,7 @@ export const Footer: React.FC<{}> = () => {
           </a>
         </Link>
         <Link
-          href="https://space.bilibili.com/41930008"
+          href="/links/bilibili"
           passHref
         >
           <a

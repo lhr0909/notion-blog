@@ -38,6 +38,31 @@ const nextConfig = {
         destination: 'https://lhr0909.github.io/development/2015/12/21/frontend-basics.html',
         permanent: true,
       },
+      {
+        source: '/links/github',
+        destination: 'https://github.com/lhr0909',
+        permanent: false,
+      },
+      {
+        source: '/links/twitter',
+        destination: 'https://twitter.com/lhr0909',
+        permanent: false,
+      },
+      {
+        source: '/links/linkedin',
+        destination: 'https://www.linkedin.com/in/simon-liang',
+        permanent: false,
+      },
+      {
+        source: '/links/youtube',
+        destination: 'https://www.youtube.com/channel/UC0VobXaEqKPcUab9rKihytA',
+        permanent: false,
+      },
+      {
+        source: '/links/bilibili',
+        destination: 'https://space.bilibili.com/41930008',
+        permanent: false,
+      },
     ];
   },
 };
