@@ -32,7 +32,7 @@ const proseClassNames = classNames(
 
 const Home: NextPage<HomeProps> = ({ siteTitle, introHtml, posts }) => {
   const { QRCode, openQRCode } = useQRCode({
-    url: "https://work.weixin.qq.com/kfid/kfc90c71573415848cb?enc_scene=ENC5nQxXLzu62P3p2VdEUR4AeUomuAWDVdeBAvwvrNA7zxo",
+    url: "https://work.weixin.qq.com/kfid/kfcfc625b727296f5e5?enc_scene=ENCUiCPtMzG1dpsURvMjb7mXJ",
     description: "微信扫码联系我",
     btnTitleMobile: "点击联系我",
   });
