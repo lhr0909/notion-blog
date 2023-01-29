@@ -8,13 +8,13 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
     <nav className="my-6 flex flex-col sm:flex-row sm:justify-between">
-      <Link href="/" passHref>
+      <Link href="/" passHref legacyBehavior>
         <a>
           <h2 className="hover:underline text-lg font-medium inline-block">{title}</h2>
         </a>
       </Link>
       {/* <div className="leading-8 inline-block">
-        <Link href="/" passHref>
+        <Link href="/" passHref legacyBehavior>
           <a className="text-blue-500 hover:underline">
             Blog Posts
           </a>

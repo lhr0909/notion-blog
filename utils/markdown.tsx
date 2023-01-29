@@ -7,6 +7,7 @@ import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 export function renderMarkdown(markdown: string): string {
   return MarkdownIt({
+    html: true,
     linkify: true,
     highlight: function (str, lang) {
       if (lang && hljs.getLanguage(lang)) {

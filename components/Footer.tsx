@@ -10,9 +10,9 @@ import BilibiliIcon from "./icons/BilibiliIcon";
 export const Footer: React.FC<{}> = () => {
   return (
     <footer className="text-gray-500 font-extralight my-8 flex flex-col sm:flex-row sm:justify-between">
-      <span className="block">Copyright (c) 2022 Simon Liang</span>
+      <span className="block">Copyright (c) 2023 Simon Liang</span>
       <span className="flex flex-row mt-2 sm:mt-0">
-        <Link href="/links/github" passHref>
+        <Link href="/links/github" passHref legacyBehavior>
           <a
             className="hover:text-blue-500 mr-1"
             target="_blank"
@@ -21,7 +21,7 @@ export const Footer: React.FC<{}> = () => {
             <GithubIcon className="h-6 w-6" />
           </a>
         </Link>
-        <Link href="/links/twitter" passHref>
+        <Link href="/links/twitter" passHref legacyBehavior>
           <a
             className="hover:text-blue-500 mx-1"
             target="_blank"
@@ -30,7 +30,7 @@ export const Footer: React.FC<{}> = () => {
             <TwitterIcon className="h-6 w-6" />
           </a>
         </Link>
-        <Link href="/links/linkedin" passHref>
+        <Link href="/links/linkedin" passHref legacyBehavior>
           <a
             className="hover:text-blue-500 mx-1"
             target="_blank"
@@ -41,7 +41,7 @@ export const Footer: React.FC<{}> = () => {
         </Link>
         <Link
           href="/links/youtube"
-          passHref
+          passHref legacyBehavior
         >
           <a
             className="hover:text-blue-500 mx-1"
@@ -53,7 +53,7 @@ export const Footer: React.FC<{}> = () => {
         </Link>
         <Link
           href="/links/bilibili"
-          passHref
+          passHref legacyBehavior
         >
           <a
             className="hover:text-blue-500 ml-1"
